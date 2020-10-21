@@ -12,5 +12,10 @@ var server = ws.createServer(function(conn){
   conn.on("error", function (code, reason) {
     console.log("异常关闭")
   });
-}).listen(8001)
+
+  conn.on("binary", function (str) {
+    console.log(str)
+    conn.sendText("My name is Web Xiu!");
+  })
+}).listen(8002)
 console.log("WebSocket建立完毕")
